@@ -1,0 +1,84 @@
+<div class="relative overflow-x-auto p-4 border border-gray-300 rounded-md">
+  <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500 " aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <input class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-sky-500 focus:border-sky-500 " id="table-search" type="text" placeholder="Buscar por nombre o correo">
+    </div>
+    <div class="flex items-center justify-center space-x-3">
+      <button class="flex items-center justify-center text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-3 py-2.5 " type="button">
+        <svg class="h-5 w-5 mr-2" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"></path>
+        </svg>
+        Agregar usuario
+      </button>
+      <div>
+        <button class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 " id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" type="button">
+          Filtrar por rol
+          <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
+          </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow " id="dropdownRadio" data-popper-escaped data-popper-placement="top" data-popper-reference-hidden style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
+          <ul class="p-3 space-y-1 text-sm text-gray-700 " aria-labelledby="dropdownRadioButton">
+            @for (opcion of dropdownOptions; track $index) {
+              <dropdown-option [opcion]="opcion"></dropdown-option>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <label class="sr-only" for="table-search">
+      Buscar
+    </label>
+  </div>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+      <tr>
+        <th class="px-6 py-3" scope="col">
+          Nombre
+        </th>
+        <th class="px-6 py-3" scope="col">
+          Correo
+        </th>
+        <th class="px-6 py-3" scope="col">
+          Rol
+        </th>
+        <th class="px-6 py-3" scope="col">
+          Estado
+        </th>
+        <th class="px-6 py-3" scope="col">
+          Acciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b ">
+        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap " scope="row">
+          Alejandro Rivas
+        </th>
+        <td class="px-6 py-4">AR_admin&#64;mail.com</td>
+        <td class="px-6 py-4">Administrador</td>
+        <td class="px-6 py-4">Activo</td>
+        <td class="px-6 py-4">
+          <a class="font-medium text-green-600 ">
+            Ver
+          </a>
+          |
+          <a class="font-medium text-sky-600 ">
+            Editar
+          </a>
+          |
+          <a class="font-medium text-red-600 ">
+            Eliminar
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <paginator></paginator>
+</div>
