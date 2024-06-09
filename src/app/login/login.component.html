@@ -7,7 +7,8 @@
           src="assets/logo.jpeg"
           alt="logo biblioteca nacional"
         >
-        <h2 class="mt-2 mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Biblioteca Nacional</h2>
+        <h2 class="mt-2 mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Biblioteca
+                    Nacional</h2>
       </div>
       <form
         class="space-y-6"
@@ -26,7 +27,7 @@
             name="email"
             type="email"
             placeholder="usuario@correo.com"
-            required
+            [(ngModel)]="correo"
           >
         </div>
         <div>
@@ -43,41 +44,18 @@
             type="password"
             placeholder="••••••••"
             required
+            [(ngModel)]="password"
           >
-        </div>
-        <div class="flex items-start">
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-sky-300"
-                id="remember"
-                type="checkbox"
-                value
-                required
-              >
-            </div>
-            <label
-              class="ms-2 text-sm font-medium text-gray-900"
-              for="remember"
-            >
-              Recordar
-            </label>
-          </div>
-          <a
-            class="ms-auto text-sm text-sky-700 hover:underline"
-            href="#"
-          >
-            Contraseña olvidada?
-          </a>
         </div>
         <button
           class="w-full text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           type="submit"
+          (click)="login()"
         >
           Iniciar sesion
         </button>
         <div class="text-sm font-medium text-gray-500">
-            ¿No tienes una cuenta?
+          ¿No tienes una cuenta?
           <a
             class="text-sky-700 hover:underline"
             href="#"

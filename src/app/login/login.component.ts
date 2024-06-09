@@ -1,21 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    standalone: true,
+    imports: [RouterLink, CommonModule, FormsModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
-  correo: string | undefined;
-  password: string | undefined;
+export class LoginComponent {
+    correo = '';
+    password = '';
+    error = false;
 
-  constructor() { }
+    constructor(private apiService: ApiService, private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {
-    this.correo = 'prueba';
-    this.password = 'adsfadf';
-  }
+    login() {
+        this.apiService.postData('auth/login', { correo: this.correo, contrasena: this.password })
+        .then((response) => {
+            this.error = false;
+            this.authService.setToken(response.jwt);
+            this.router.navigate(['/']);
+        })
+        .catch((error) => {
+            this.error = true;
+        });
+    }
 }

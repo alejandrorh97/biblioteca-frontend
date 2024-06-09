@@ -3,23 +3,25 @@
     Mostrando
     <span class="font-semibold text-gray-900 ">{{getDesdeHasta()}}</span>
     de
-    <span class="font-semibold text-gray-900 ">{{total}}</span>
+    <span class="font-semibold text-gray-900 ">{{totalElementos}}</span>
   </span>
   <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
     <li>
-      <a class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ">
+      <a class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
+      (click)="anterior()">
         Anterior
       </a>
     </li>
     @for (item of getPaginas(); track $index) {
-      <li>
-        <a [ngClass]="$index === page - 1 ? currentPageStyle : pageStyle">
-          {{item}}
-        </a>
-      </li>
+    <li>
+      <a class="cursor-pointer" [ngClass]="$index === pagina - 1 ? currentPageStyle : pageStyle" (click)="irAPagina(item)">
+        {{item}}
+      </a>
+    </li>
     }
     <li>
-      <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 ">
+      <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
+      (click)="siguiente()">
         Siguiente
       </a>
     </li>

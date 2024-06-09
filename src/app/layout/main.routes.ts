@@ -22,6 +22,10 @@ export const MAIN_ROUTES: Routes = [
       {
         path: 'prestamos',
         loadChildren: () => import('../prestamos/prestamos.routes').then(m => m.PRESTAMOS_ROUTES)
+      },
+      {
+        path: 'mis_prestamos',
+        loadChildren: () => import('../MisPrestamos/mis.prestamos.routes').then(m => m.MIS_PRESTAMOS_ROUTES)
       }
     ]
   }

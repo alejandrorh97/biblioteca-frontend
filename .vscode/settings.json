@@ -1,0 +1,5 @@
+{
+    "angular-template-formatter.indentWidth": 2,
+    "bladeFormatter.format.indentSize": 2,
+    "editor.tabSize": 2
+}

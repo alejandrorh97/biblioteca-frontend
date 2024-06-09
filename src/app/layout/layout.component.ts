@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SidebarItemComponent } from '../components/sidebar-item/sidebar-item.component';
-import { faChartPie, faChartSimple, faGear, faHandHolding, faHandshake, faPhotoFilm, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+import { faChartPie, faChartSimple, faHandHolding, faHandshake, faPhotoFilm, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-layout',
@@ -16,7 +16,7 @@ export class MainLayout {
     { icono: faUserGroup, texto: 'Usuarios', ruta: '/usuarios' },
     { icono: faPhotoFilm, texto: 'Contenido', ruta: '/contenidos' },
     { icono: faHandHolding, texto: 'Prestamos', ruta: '/prestamos' },
-    { icono: faHandshake, texto: 'Mis prestamos', ruta: '/' },
+    { icono: faHandshake, texto: 'Mis prestamos', ruta: '/mis_prestamos' },
     { icono: faChartPie, texto: 'Reportes', ruta: '/' },
   ];
 }
