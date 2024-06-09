@@ -6,7 +6,14 @@
           <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
         </svg>
       </div>
-      <input class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-sky-500 focus:border-sky-500 " id="table-search" type="text" placeholder="Buscar por titulo, autor, publicador o genero">
+      <input 
+      class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-sky-500 focus:border-sky-500 "
+      id="table-search"
+      type="text"
+      placeholder="Buscar por titulo, autor, publicador o genero"
+      (ngModelChange)="onBuscar($event)"
+      [(ngModel)]="busqueda"
+      >
     </div>
     <div class="flex items-center justify-center space-x-3">
       <button class="flex items-center justify-center text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-3 py-2.5 " type="button">
@@ -17,7 +24,7 @@
       </button>
       <div>
         <button class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-2.5 " id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" type="button">
-          Filtrar por categoria
+          {{ categoria.nombre || 'Todos' }}
           <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
           </svg>
@@ -25,8 +32,8 @@
         <!-- Dropdown menu -->
         <div class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow " id="dropdownRadio" data-popper-escaped data-popper-placement="top" data-popper-reference-hidden style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
           <ul class="p-3 space-y-1 text-sm text-gray-700 " aria-labelledby="dropdownRadioButton">
-            @for (opcion of dropdownOptions; track $index) {
-              <dropdown-option [opcion]="opcion"></dropdown-option>
+            @for (opcion of categorias; track $index) {
+              <dropdown-option [opcion]="opcion.nombre" (click)="onCategoriaChange(opcion)"></dropdown-option>
             }
           </ul>
         </div>
@@ -66,16 +73,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="bg-white border-b ">
+      <tr class="bg-white border-b" *ngFor="let contenido of contenidos">
         <td class="p-4">
           <img class="w-16 md:w-32 max-w-full max-h-full" src="https://www.apple.com/newsroom/images/product/watch/standard/Apple_watch-series7_hero_09142021_big.jpg.slideshow-medium_2x.jpg" alt="Apple Watch">
         </td>
-        <td class="px-6 py-4 font-semibold text-gray-900">Lazaro</td>
-        <td class="px-6 py-4 font-semibold text-gray-900">Joselito</td>
-        <td class="px-6 py-4 font-semibold text-gray-900">Ficcion</td>
-        <td class="px-6 py-4 font-semibold text-gray-900">Novela</td>
-        <td class="px-6 py-4 font-semibold text-gray-900">5</td>
-        <td class="px-6 py-4 font-semibold text-gray-900 ">Si</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{contenido.titulo}}</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{contenido.autor}}</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{contenido.genero}}</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{contenido.categoria}}</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{contenido.unidadesDisponibles}}</td>
+        <td class="px-6 py-4 font-semibold text-gray-900">{{ contenido.prestable ? 'Si' : 'No'}}</td>
         <td class="px-6 py-4">
           <a class="font-medium text-green-600 ">
             Ver
