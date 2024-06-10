@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE_URL: string = 'http://localhost:8080/';
+  private BASE_URL: string = 'http://biblioteca-backend-api-1:8080/';
   private cliente: AxiosInstance;
 
   constructor(private authService: AuthService) {
